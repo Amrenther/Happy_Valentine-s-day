@@ -225,6 +225,56 @@
             .glass-card { padding: 2rem 1.5rem; }
             .quote { font-size: 1.5rem; }
         }
+
+        .responsive-img {
+  width: 100%;
+  height: auto;
+  max-width: 470px;   /* desktop max size */
+  aspect-ratio: 470 / 270;
+  object-fit: cover;
+  display: block;
+}
+
+/* Center image if needed */
+.img-container {
+  width: 100%;
+  max-width: 470px;
+}
+
+/* Large desktop */
+@media (min-width: 1400px) {
+  .responsive-img {
+    max-width: 470px;
+  }
+}
+
+/* Laptop */
+@media (max-width: 1200px) {
+  .responsive-img {
+    max-width: 420px;
+  }
+}
+
+/* Tablet */
+@media (max-width: 992px) {
+  .responsive-img {
+    max-width: 360px;
+  }
+}
+
+/* Large mobile */
+@media (max-width: 768px) {
+  .responsive-img {
+    max-width: 100%;
+  }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+  .responsive-img {
+    max-width: 100%;
+  }
+}
     </style>
 </head>
 <body>
@@ -251,7 +301,7 @@
                     With all my love,
                 </p>
             </div>
-            <img src="photos/Yara.jpeg" alt="image" width="470" height="270">
+            <img class="responsive-img" src="photos/Yara.jpeg" alt="image">
 
             <div class="quote-section">
                 <div class="quote">"Love is composed of a single soul inhabiting two bodies."</div>
