@@ -1,0 +1,315 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Message for Yara</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-red: #800000;
+            --soft-pink: #ffc0cb;
+            --silk-gold: #e6cfa3;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.15);
+            --text-color: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--primary-red);
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Red Silk Texture Effect */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Creating a silk-like gradient using multiple layers */
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(139, 0, 0, 0.8) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(178, 34, 34, 0.8) 0%, transparent 40%),
+                linear-gradient(45deg, #4a0404 0%, #8a0303 25%, #500000 50%, #8a0303 75%, #4a0404 100%);
+            background-size: 200% 200%;
+            animation: silkFlow 15s ease infinite;
+            z-index: -2;
+        }
+
+        /* Subtle noise texture for realism */
+        body::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+            opacity: 0.3;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        @keyframes silkFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Main Container */
+        .container {
+            width: 90%;
+            max-width: 800px;
+            padding: 3rem 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Glass Card Style */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 3rem 2.5rem;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            text-align: center;
+            animation: fadeInUp 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        /* Typography */
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #ffcccc, #ffffff, #ffcccc);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--silk-gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+        }
+
+        .message-content {
+            line-height: 1.8;
+            font-size: 1.05rem;
+            margin-bottom: 3rem;
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        .message-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        /* Highlight Text */
+        .highlight {
+            font-weight: 600;
+            color: var(--soft-pink);
+            font-size: 1.1em;
+        }
+
+        /* Quote Section */
+        .quote-section {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .quote {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            font-style: italic;
+            color: var(--silk-gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .author {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        /* Heart Button */
+        .heart-btn {
+            margin-top: 3rem;
+            background: linear-gradient(45deg, #ff416c, #ff4b2b);
+            border: none;
+            padding: 1rem 2.5rem;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 75, 43, 0.4);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .heart-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(255, 75, 43, 0.6);
+        }
+
+        .heart-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+            100% { transform: translateY(0) rotate(0deg); }
+        }
+
+        /* Floating Hearts (JS generated) */
+        .floating-heart {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.4);
+            animation: rise 10s infinite ease-in;
+            z-index: 0;
+            pointer-events: none;
+            font-size: 1.5rem;
+        }
+
+        @keyframes rise {
+            0% { transform: translateY(110vh) scale(0.5); opacity: 0; }
+            20% { opacity: 0.8; }
+            100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            h1 { font-size: 3rem; }
+            .glass-card { padding: 2rem 1.5rem; }
+            .quote { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="glass-card">
+            <div class="subtitle">Happy Valentine's Day</div>
+            <h1>For Yara</h1>
+            
+            <div class="message-content">
+                <p>
+                    Dear Yara,
+                </p>
+                <p>
+                    As the world turns red today, my heart glows a little brighter because of you. You are not just a chapter in my story, but the best part of it. Your smile is the soft silk that makes my rough days feel gentle.
+                </p>
+                <p>
+                    I want you to know that every moment we share, every laugh we create, and every quiet moment together is a treasure I hold close. Thank you for being my sunshine and my calm.
+                </p>
+                <p>
+                    May this day be filled with as much love as you bring into my life.
+                </p>
+                <p class="highlight">
+                    With all my love,
+                </p>
+            </div>
+            <img src="photos/Yara.jpeg" alt="image" width="470" height="270">
+
+            <div class="quote-section">
+                <div class="quote">"Love is composed of a single soul inhabiting two bodies."</div>
+                <div class="author">— Amrenther</div>
+            </div>
+
+            <button class="heart-btn" onclick="doubleHeart(this)">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
+                Send Love
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Floating Hearts Background Animation
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('floating-heart');
+            heart.innerHTML = '♥';
+            
+            // Randomize position and animation duration
+            const left = Math.random() * 100;
+            const duration = Math.random() * 5 + 5; // Between 5 and 10 seconds
+            const size = Math.random() * 20 + 10;
+            
+            heart.style.left = `${left}%`;
+            heart.style.animationDuration = `${duration}s`;
+            heart.style.fontSize = `${size}px`;
+            
+            document.body.appendChild(heart);
+            
+            // Remove heart after animation to prevent DOM clutter
+            setTimeout(() => {
+                heart.remove();
+            }, duration * 1000);
+        }
+
+        // Create a heart every 1.5 seconds
+        setInterval(createHeart, 1500);
+
+        // Button Interaction
+        function doubleHeart(btn) {
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '❤️ Sent with love! ❤️';
+            btn.style.background = 'linear-gradient(45deg, #1a1a1a, #4a4a4a)';
+            btn.style.cursor = 'default';
+            btn.disabled = true;
+
+            // Burst effect (simple visual cue)
+            for(let i = 0; i < 5; i++) {
+                setTimeout(createHeart, i * 100);
+            }
+
+            setTimeout(() => {
+                btn.innerHTML = 'Thank You, Yara!';
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
