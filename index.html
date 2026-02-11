@@ -96,7 +96,7 @@
             animation: fadeInUp 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
             opacity: 0;
             transform: translateY(30px);
-            margin-top: 300px;
+            margin-top: 480px;
         }
 
         /* Typography */
@@ -227,26 +227,27 @@
             .quote { font-size: 1.5rem; }
         }
 
-        .responsive-img {
+        .img-wrapper {
   width: 100%;
+  display: flex;
+  justify-content: center;  /* horizontal center */
+  align-items: center;
+}
+
+/* Image */
+.responsive-img {
+  width: 100%;
+  max-width: 470px;
   height: auto;
-  max-width: 470px;   /* desktop max size */
   aspect-ratio: 470 / 270;
   object-fit: cover;
   display: block;
 }
 
-/* Center image if needed */
-.img-container {
-  width: 100%;
-  max-width: 470px;
-}
-
-/* Large desktop */
-@media (min-width: 1400px) {
+/* Tablet */
+@media (max-width: 992px) {
   .responsive-img {
-    max-width: 470px;
-    
+    max-width: 380px;
   }
 }
 
@@ -257,26 +258,13 @@
   }
 }
 
-/* Tablet */
-@media (max-width: 992px) {
-  .responsive-img {
-    max-width: 360px;
-  }
-}
-
-/* Large mobile */
+/* Mobile — keep as you said (already good) */
 @media (max-width: 768px) {
   .responsive-img {
     max-width: 100%;
   }
 }
 
-/* Small mobile */
-@media (max-width: 480px) {
-  .responsive-img {
-    max-width: 100%;
-  }
-}
     </style>
 </head>
 <body>
@@ -303,7 +291,9 @@
                     With all my love,
                 </p>
             </div>
-            <img class="responsive-img" src="photos/Yara.jpeg" alt="image">
+            <div class="img-wrapper">
+                <img class="responsive-img" src="photos/Yara.jpeg" alt="image">
+            </div>
 
             <div class="quote-section">
                 <div class="quote">"Love is composed of a single soul inhabiting two bodies."</div>
